@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 import csv
+from selenium.webdriver import ActionChains
 
 from helpers import testconfig
 
@@ -16,7 +17,7 @@ logger.basicConfig(filename='../reports/logs/surplus.log', datefmt='%m/%d/%Y %I:
 """
 def log(msg,type):
     nw = datetime.datetime.now()
-    if type=="error":
+    if type == "error":
         logger.error(msg+" - "+str(nw))
     elif type == "info":
         logger.info(msg+" - "+str(nw))
@@ -52,16 +53,17 @@ def get_elements(driver,locator):
     except Exception as e:
         log("Error in element finding - "+str(e),"error")
         return None
-
-
-
-
-
-
-
-
 def close_browser(driver):
     driver.close()
+
+
+def action_obj(driver):
+    act = ActionChains(driver)
+
+
+
+
+
 
 def read_csv_cred():
     with open(testconfig.csv_cred_path, mode='r') as file:

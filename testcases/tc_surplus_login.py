@@ -21,3 +21,20 @@ def test_gust_login(driver):
     time.sleep(5)
 
 
+def test_wish_list(driver):
+    helper.maximize(driver)
+    driver.get(testconfig.base_url)
+    helper.verify_page_title(driver,testdata.webpage_title)
+    pg_surplus_login.list_wish(driver)
+    time.sleep(5)
+
+
+def test_add_card(driver):
+    helper.maximize(driver)
+    driver.get(testconfig.base_url)
+    helper.verify_page_title(driver, testdata.webpage_title)
+    pg_surplus_login.add_cart(driver)
+    time.sleep(10)
+
+
+
